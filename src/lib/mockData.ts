@@ -111,7 +111,9 @@ export const createMockNotifications = (count: number): Notification[] => {
   ];
   
   return Array.from({ length: count }).map((_, index) => {
-    const priority = Math.random() > 0.7 ? 'high' : Math.random() > 0.4 ? 'medium' : 'low';
+    // Fix: Explicitly type the priority to be one of the allowed values
+    const priority: 'high' | 'medium' | 'low' = 
+      Math.random() > 0.7 ? 'high' : Math.random() > 0.4 ? 'medium' : 'low';
     
     return {
       id: `notif-${index + 1}`,
